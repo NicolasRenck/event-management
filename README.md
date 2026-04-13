@@ -6,13 +6,9 @@ Uma aplicação web robusta desenvolvida em Django para facilitar a organizaçã
 
 ## Funcionalidades
 
-Autenticação Completa: Cadastro de novos usuários e sistema de login/logout.
-
 Autenticação e Segurança: Proteção de rotas sensíveis utilizando LoginRequiredMixin, garantindo que apenas usuários autenticados gerenciem conteúdos.
 
 Dashboard Interativo: Interface principal com busca dinâmica e filtros para localização rápida de eventos.
-
-Interface Moderna: Design focado em UI/UX com CSS customizado, utilizando animações suaves, centralização inteligente e tratamento de texto para evitar quebras de layout.
 
 UI Responsiva & Polida: Sistema de grid dinâmico com altura de cards padronizada e tratamento de overflow de texto, garantindo uma interface consistente independente do volume de dados.
 
