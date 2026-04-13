@@ -14,6 +14,8 @@ UI Responsiva & Polida: Sistema de grid dinâmico com altura de cards padronizad
 
 Segurança e Permissões: Implementação de LoginRequiredMixin e verificações a nível de View para garantir que usuários só gerenciem seus próprios eventos, além de proteção contra ataques CSRF em todos os formulários.
 
+Persistência de Dados Robusta: Integração total com PostgreSQL, garantindo a integridade dos dados, suporte a transações complexas e prontidão para escalabilidade em ambiente de produção.
+
 
 
 ## Tecnologias
