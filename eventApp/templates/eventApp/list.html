@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="list-header">
+    <div class="list-header-text">
+        <span class="form-tag">Dashboard</span>
+        <h1 class="list-title">Events trending today</h1>
+        <p class="list-subtitle">Manage and track all your events in one place.</p>
+
+        <form method="get" class="search-form">
+            <input
+                type="text"
+                name="q"
+                placeholder="Search events..."
+                value="{{ query|default:'' }}"
+                class="search-input"
+            >
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+    </div>
+    <a href="{% url 'add_event' %}" class="add-event-btn">+ Add Event</a>
+</div>
+
+<div class="events-grid">
+    {% for event in events %}
+        <a href="{% url 'event_detail' event.pk %}" class="card-link">
+            <div class="event-card">
+                
+                {% if event.image %}
+                    <img src="{{ event.image.url }}" alt="{{ event.nameEvent }}">
+                {% else %}
+                    <div class="no-image">No image</div>
+                {% endif %}
+
+                <div class="event-info">
+                    <h3>{{ event.nameEvent }}</h3>
+                    <p>{{ event.description }}</p>
+                    <span class="event-date">On {{ event.starts_at|date:"d M Y, H:i" }}</span>
+                </div>
+
+                <div class="event-actions">
+                    <object>
+                        <a href="{% url 'edit_event' event.pk %}" 
+                           class="action-btn" 
+                           onclick="event.stopPropagation();">
+                           Edit
+                        </a>
+                    </object>
+                    <object>
+                        <a href="{% url 'delete_event' event.pk %}" 
+                           class="action-btn delete" 
+                           onclick="event.stopPropagation();">
+                           Delete
+                        </a>
+                    </object>
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <div class="empty">
+            <p>No events yet. Create your first one!</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

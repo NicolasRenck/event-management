@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-page">
+    <div class="form-page-left">
+        <div class="form-page-decoration">
+            <div class="deco-circle deco-1"></div>
+            <div class="deco-circle deco-2"></div>
+            <div class="deco-circle deco-3"></div>
+        </div>
+        <div class="form-page-text">
+            <span class="form-tag">Editing</span>
+            <h1>Update your<br>event</h1>
+            <p>Make changes and keep your audience informed.</p>
+        </div>
+    </div>
+
+    <div class="form-page-right">
+        <div class="form-card">
+            <h2>Edit Event</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="field-group">
+                    <label>Name</label>
+                    {{ form.nameEvent }}
+                </div>
+
+                <div class="field-group">
+                    <label>Description</label>
+                    {{ form.description }}
+                </div>
+
+                <div class="field-group">
+                    <label>Starts At</label>
+                    {{ form.starts_at }}
+                </div>
+
+                <div class="field-group image-field-group">
+                    <label>Image</label>
+                    {{ form.image }}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Save Changes</button>
+                    <a href="{% url 'events' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

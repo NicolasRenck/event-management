@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-page">
+    <div class="form-page-left">
+        <div class="form-page-decoration">
+            <div class="deco-circle deco-1"></div>
+            <div class="deco-circle deco-2"></div>
+            <div class="deco-circle deco-3"></div>
+        </div>
+        <div class="form-page-text">
+            <span class="form-tag">Checkout</span>
+            <h1>Almost<br>there!</h1>
+            <p>Fill in your details to confirm your spot at <strong style="color:#fff;">{{ event.nameEvent }}</strong>.</p>
+            <div class="ticket-event-summary">
+                <p class="summary-date">📅 {{ event.starts_at|date:"d M Y · H:i" }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-page-right">
+        <div class="form-card">
+            <h2>Your details</h2>
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="field-group">
+                    <label>Full Name</label>
+                    {{ form.full_name }}
+                    {% if form.full_name.errors %}
+                        <span class="field-error">{{ form.full_name.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="field-group">
+                    <label>Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <span class="field-error">{{ form.email.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="field-group">
+                    <label>Phone</label>
+                    {{ form.phone }}
+                    {% if form.phone.errors %}
+                        <span class="field-error">{{ form.phone.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Confirm Registration</button>
+                    <a href="{% url 'event_detail' event.pk %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

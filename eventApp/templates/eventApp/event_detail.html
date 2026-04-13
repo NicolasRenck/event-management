@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO BANNER -->
+<div class="detail-banner">
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="{{ event.nameEvent }}" class="detail-banner-img">
+    {% else %}
+        <div class="detail-banner-placeholder"></div>
+    {% endif %}
+    <div class="detail-banner-overlay">
+        <a href="{% url 'events' %}" class="back-btn">← Back</a>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="detail-content">
+
+    <!-- LEFT -->
+    <div class="detail-main">
+        <span class="form-tag">Event</span>
+        <h1 class="detail-title">{{ event.nameEvent }}</h1>
+        <p class="detail-date">📅 {{ event.starts_at|date:"d M Y · H:i" }}</p>
+        <div class="detail-divider"></div>
+        <h3 class="detail-section-title">About this event</h3>
+        <p class="detail-description">{{ event.description }}</p>
+    </div>
+
+    <!-- RIGHT — TICKET -->
+    <div class="detail-sidebar">
+        <div class="ticket-card">
+            <div class="ticket-header">
+                <h3>Get your ticket</h3>
+                <span class="ticket-count">{{ ticket_count }} registered</span>
+            </div>
+            <div class="ticket-divider"></div>
+            <div class="ticket-info">
+                <p class="ticket-event-name">{{ event.nameEvent }}</p>
+                <p class="ticket-date">{{ event.starts_at|date:"d M Y · H:i" }}</p>
+            </div>
+            {% if already_registered %}
+                <div class="ticket-registered">
+                     You're registered for this event!
+                </div>
+            {% else %}
+                <form method="post" action="{% url 'buy_ticket' event.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="ticket-btn">Register for free</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

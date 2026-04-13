@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="success-page">
+    <div class="success-card">
+        <div class="success-icon"></div>
+        <h1 class="success-title">You're in!</h1>
+        <p class="success-subtitle">Your spot at <strong>{{ event.nameEvent }}</strong> is confirmed.</p>
+
+        <div class="success-ticket">
+            <div class="success-ticket-row">
+                <span class="success-ticket-label">Event</span>
+                <span class="success-ticket-value">{{ event.nameEvent }}</span>
+            </div>
+            <div class="success-ticket-divider"></div>
+            <div class="success-ticket-row">
+                <span class="success-ticket-label">Date</span>
+                <span class="success-ticket-value">{{ event.starts_at|date:"d M Y · H:i" }}</span>
+            </div>
+            <div class="success-ticket-divider"></div>
+            <div class="success-ticket-row">
+                <span class="success-ticket-label">Status</span>
+                <span class="success-ticket-badge">Confirmed</span>
+            </div>
+        </div>
+
+        <div class="success-actions">
+            <a href="{% url 'events' %}" class="success-btn-primary">Back to Events</a>
+            <a href="{% url 'event_detail' event.pk %}" class="success-btn-secondary">View Event</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
