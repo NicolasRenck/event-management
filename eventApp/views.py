@@ -9,7 +9,6 @@ from django.views.generic import View
 from .models import Ticket
 from .models import Events
 from .forms import EventForm, TicketForm
-
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -21,7 +20,7 @@ class EventList(LoginRequiredMixin, ListView):
     template_name = 'eventApp/list.html'
 
     def get_queryset(self):
-        queryset = Events.objects.filter(user=self.request.user)
+        queryset = Events.objects.all() 
         query = self.request.GET.get('q')
         if query:
             queryset = queryset.filter(nameEvent__icontains=query)
@@ -41,13 +40,6 @@ class AddEvent(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('events') 
     template_name = 'eventApp/add_event.html'
 
-
-    def post(self, request, *args, **kwargs):  
-        self.object = None
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        return self.form_invalid(form)
 
 
     def form_valid(self, form): 

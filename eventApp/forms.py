@@ -1,7 +1,8 @@
 from django import forms
 from .models import Events
 from .models import Ticket
-from django.forms import ClearableFileInput
+# Importe o FileInput no lugar do ClearableFileInput
+from django.forms import FileInput 
 
 class EventForm(forms.ModelForm):
     starts_at = forms.DateTimeField(
@@ -16,11 +17,8 @@ class EventForm(forms.ModelForm):
         model = Events
         fields = ['nameEvent', 'description', 'starts_at', 'image']
         widgets = {
-            'image': ClearableFileInput(attrs={'class': 'image-upload'})
+            'image': FileInput(attrs={'class': 'image-upload'})
         }
-
-
-
 
 class TicketForm(forms.Form):
     full_name = forms.CharField(max_length=200)

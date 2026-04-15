@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Welcome | Event Management</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="welcome-body">
+
+    <div class="welcome-wrapper">
+
+        
+        <div class="welcome-text-side">
+            <div class="welcome-badge">
+                <span class="welcome-badge-dot"></span>
+                <span>Event Management Platform</span>
+            </div>
+
+            <h1>Organize<br>your events.<br><em>Effortlessly.</em></h1>
+
+            <p>Plan, manage, and share your events in one place. From small gatherings to large conferences, keep everything under control.</p>
+
+            <div class="welcome-buttons">
+                <a href="{% url 'register' %}" class="btn-primary-welcome">Create your account</a>
+                <a href="{% url 'login' %}" class="btn-secondary-welcome">Sign in</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: Visual Card -->
+        <div class="welcome-visual-side">
+            <div class="welcome-card">
+                <div class="welcome-card-header">Upcoming events</div>
+
+                <div class="welcome-card-grid">
+                    <div class="card-day-label">Mon</div>
+                    <div class="card-day-label">
+                        <span class="card-highlight-today">Tue</span>
+                    </div>
+                    <div class="card-day-label">Wed</div>
+                    <div class="card-day-label">Thu</div>
+                    <div class="card-day-label">Fri</div>
+                    <div class="card-day-label">Sat</div>
+                    <div class="card-day-label">Sun</div>
+
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block blue">Team Kickoff<br>09:00</div>
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block teal">Workshop<br>14:00</div>
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block blue">Conf.<br>10:00</div>
+                    <div class="card-event-block empty"></div>
+
+                    <div class="card-event-block teal">Standup<br>08:30</div>
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block blue">Demo<br>15:00</div>
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block teal">Review<br>11:00</div>
+                    <div class="card-event-block empty"></div>
+                    <div class="card-event-block blue">Meetup<br>18:00</div>
+                </div>
+
+                <div class="card-stat-row">
+                    <div class="card-stat">
+                        <div class="card-stat-value">12</div>
+                        <div class="card-stat-label">This week</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">3</div>
+                        <div class="card-stat-label">Today</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">47</div>
+                        <div class="card-stat-label">This month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Floating socials -->
+    <div class="floating-socials">
+        <a href="https://github.com/NicolasRenck" target="_blank" class="social-item">
+            <i class="fab fa-github"></i> github
+        </a>
+        <a href="https://www.linkedin.com/in/nicolas-renck-75ba74232/" target="_blank" class="social-item">
+            <i class="fab fa-linkedin"></i> linkedin
+        </a>
+    </div>
+
+</body>
+</html>

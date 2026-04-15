@@ -1,15 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="form-page">
 
-<div class="auth-card">
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-        <a href="{% url 'register' %}">Don't have an account? Register</a>
-    </form>
+    
+    <div class="form-page-left">
+
+        <div class="form-page-decoration">
+            <div class="deco-circle deco-1"></div>
+            <div class="deco-circle deco-2"></div>
+            <div class="deco-circle deco-3"></div>
+        </div>
+
+        <div class="form-page-text">
+            <span class="form-tag">LOGIN</span>
+            <h1>Welcome back!</h1>
+            <p>The events you love, all in one place.</p>
+        </div>
+
+    </div>
+
+    <!-- LADO DIREITO -->
+    <div class="form-page-right">
+
+        <div class="form-card">
+            <h2>Login</h2>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="form-actions">
+                    <button type="submit">Login</button>
+                    <a href="{% url 'register' %}">Register</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
 </div>
-
 {% endblock %}

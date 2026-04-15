@@ -32,6 +32,7 @@ Controle de Versão: Git e GitHub.
 
 ## Screenshots
  
+![Landing Page](screenshots/landing.png)
 
 ![Home](screenshots/home.png)
 

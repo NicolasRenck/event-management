@@ -4,16 +4,15 @@
 
 <div class="list-header">
     <div class="list-header-text">
-        <span class="form-tag">Dashboard</span>
         <h1 class="list-title">Events trending today</h1>
         <p class="list-subtitle">Manage and track all your events in one place.</p>
 
         <form method="get" class="search-form">
-            <input
-                type="text"
-                name="q"
-                placeholder="Search events..."
-                value="{{ query|default:'' }}"
+            <input 
+                type="text" 
+                name="q" 
+                placeholder="Search events..." 
+                value="{{ query|default:'' }}" 
                 class="search-input"
             >
             <button type="submit" class="search-btn">Search</button>
@@ -26,11 +25,8 @@
     {% for event in events %}
         <a href="{% url 'event_detail' event.pk %}" class="card-link">
             <div class="event-card">
-                
                 {% if event.image %}
                     <img src="{{ event.image.url }}" alt="{{ event.nameEvent }}">
-                {% else %}
-                    <div class="no-image">No image</div>
                 {% endif %}
 
                 <div class="event-info">
@@ -40,26 +36,32 @@
                 </div>
 
                 <div class="event-actions">
-                    <object>
-                        <a href="{% url 'edit_event' event.pk %}" 
-                           class="action-btn" 
-                           onclick="event.stopPropagation();">
-                           Edit
-                        </a>
-                    </object>
-                    <object>
-                        <a href="{% url 'delete_event' event.pk %}" 
-                           class="action-btn delete" 
-                           onclick="event.stopPropagation();">
-                           Delete
-                        </a>
-                    </object>
+                    {% if event.user == request.user %}
+                        <object>
+                            <a href="{% url 'edit_event' event.pk %}" 
+                               class="action-btn" 
+                               onclick="event.stopPropagation();">
+                               Edit
+                            </a>
+                        </object>
+                        <object>
+                            <a href="{% url 'delete_event' event.pk %}" 
+                               class="action-btn delete" 
+                               onclick="event.stopPropagation();">
+                               Delete
+                            </a>
+                        </object>
+                    {% else %}
+                        <span class="view-details" style="grid-column: span 2; text-align: center; padding: 10px; color: var(--accent); font-weight: 500;">
+                            Ver Detalhes
+                        </span>
+                    {% endif %}
                 </div>
             </div>
         </a>
     {% empty %}
         <div class="empty">
-            <p>No events yet. Create your first one!</p>
+            <p>No events found.</p>
         </div>
     {% endfor %}
 </div>
