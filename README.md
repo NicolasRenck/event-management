@@ -28,6 +28,8 @@ Banco de Dados: PostgreSQL (Produção).
 
 Controle de Versão: Git e GitHub.
 
+Containerização: Docker + Docker Compose para ambiente de desenvolvimento reproduzível.
+
 
 
 ## Screenshots
@@ -46,25 +48,41 @@ Controle de Versão: Git e GitHub.
 
 ## Como rodar localmente
 
+### Com Docker (recomendado)
 
 ```bash
 git clone https://github.com/NicolasRenck/event-management
-cd event_management
+cd event-management
+```
+
+Crie um arquivo `.env` na raiz com as variáveis:
+
+```env
+DB_NAME=eventdb
+DB_USER=postgres
+DB_PASSWORD=sua_senha
+DB_HOST=db
+DB_PORT=5432
+```
+
+Suba os containers:
+
+```bash
+docker-compose up --build
+```
+
+Acesse em: `http://localhost:8000`
+
+---
+
+### Sem Docker
+
+```bash
+git clone https://github.com/NicolasRenck/event-management
+cd event-management
 python -m venv venv
 venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
-
-
-
-**requirements.txt:**
-```
-asgiref==3.11.1
-Django==6.0.4
-pillow==12.2.0
-psycopg2-binary==2.9.11
-python-decouple==3.8
-sqlparse==0.5.5
-tzdata==2026.1
