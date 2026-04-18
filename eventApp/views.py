@@ -116,8 +116,6 @@ class TicketSuccess(LoginRequiredMixin, DetailView):
 
 
 
-
-
 class Registro(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/register.html'

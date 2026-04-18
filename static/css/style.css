@@ -224,9 +224,10 @@ nav span {
 ───────────────────────────────────────────────── */
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
-    grid-auto-rows: 1fr;
+    grid-auto-rows: 380px;
+    align-items: stretch;
 }
 
 /* ─────────────────────────────────────────────────
@@ -236,6 +237,7 @@ nav span {
     text-decoration: none;
     color: inherit;
     display: block;
+    height: 100%;
 }
 
 .event-card {
@@ -247,12 +249,13 @@ nav span {
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-link:hover .event-card {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(26, 86, 219, 0.14);
+    border-color: var(--accent);
 }
 
 .event-card img {
@@ -281,6 +284,9 @@ nav span {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-height: 110px;
+    max-height: 110px;
+    overflow: hidden;
 }
 
 .event-card h3 {
@@ -659,7 +665,8 @@ nav span {
 }
 
 .form-card button {
-    padding: 10px 20px;
+    justify-content: center;
+    padding: 10px 10px;
     border-radius: 8px;
     font-weight: 600;
 }
@@ -750,17 +757,18 @@ form a:hover { color: var(--text-primary); }
 /* ─────────────────────────────────────────────────
    AUTH CARD (login / register)
 ───────────────────────────────────────────────── */
-.auth-container-wrapper {
-    height: 100vh;
+.container:has(.auth-card) {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f3f4f6;
+    min-height: calc(100vh - 56px);
+    padding: 40px 32px;
 }
 
 .auth-card {
     display: flex;
     width: 950px;
+    max-width: 100%;
     height: 520px;
     border-radius: 18px;
     overflow: hidden;
@@ -773,7 +781,7 @@ form a:hover { color: var(--text-primary); }
     position: relative;
     padding: 60px 50px;
     color: white;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: linear-gradient(145deg, #1a3a5c 0%, #1a56db 60%, #3b82f6 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -800,9 +808,6 @@ form a:hover { color: var(--text-primary); }
     border-radius: 50%;
     bottom: -60px;
     left: -40px;
-    box-shadow:
-        180px -40px 0 0 rgba(255,255,255,0.05),
-        80px 120px 0 0 rgba(255,255,255,0.04);
 }
 
 .badge {
@@ -838,12 +843,14 @@ form a:hover { color: var(--text-primary); }
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: var(--bg);
 }
 
 .auth-right h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .auth-right form {
@@ -851,40 +858,69 @@ form a:hover { color: var(--text-primary); }
     flex-direction: column;
 }
 
+.auth-right form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.auth-right form label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 5px;
+}
+
 .auth-right input {
     width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    margin-bottom: 14px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #fafafa;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     outline: none;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
-.auth-right input:focus { border-color: #2a5298; }
+.auth-right input:focus {
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(26,86,219,0.08);
+}
 
-.auth-right button {
-    padding: 10px;
+.auth-right button[type="submit"] {
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
-    background: #2a5298;
+    border-radius: 8px;
+    background: var(--accent);
     color: white;
-    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 6px;
 }
 
-.auth-right button:hover { background: #1e3c72; }
+.auth-right button[type="submit"]:hover {
+    background: #1447c0;
+    transform: translateY(-1px);
+}
 
 .auth-right a {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 14px;
+    font-size: 13px;
     text-decoration: none;
-    color: #2a5298;
+    color: var(--text-secondary);
+    transition: color 0.2s;
 }
 
-.auth-right a:hover { text-decoration: underline; }
+.auth-right a:hover {
+    color: var(--accent);
+}
 
 /* ─────────────────────────────────────────────────
    DELETE PAGE
