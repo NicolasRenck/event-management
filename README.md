@@ -2,38 +2,35 @@
 
 Uma aplicação web robusta desenvolvida em Django para facilitar a organização, edição e descoberta de eventos. O sistema foca em uma experiência de usuário limpa, utilizando uma interface baseada em "cards" e "ilhas" de edição totalmente responsivas.
 
-
+---
 
 ## Funcionalidades
 
-Autenticação e Segurança: Proteção de rotas sensíveis utilizando LoginRequiredMixin, garantindo que apenas usuários autenticados gerenciem conteúdos.
+- **Autenticação e Segurança:** Proteção de rotas sensíveis utilizando `LoginRequiredMixin`, garantindo que apenas usuários autenticados gerenciem conteúdos.
+- **Dashboard Interativo:** Interface principal com busca dinâmica e filtros para localização rápida de eventos.
+- **UI Responsiva & Polida:** Sistema de grid dinâmico com altura de cards padronizada e tratamento de overflow de texto, garantindo uma interface consistente independente do volume de dados.
+- **Segurança e Permissões:** Verificações a nível de View garantindo que usuários só gerenciem seus próprios eventos, além de proteção contra ataques CSRF em todos os formulários.
+- **Upload de Imagens:** Suporte a imagens de capa para eventos via Pillow.
+- **Persistência de Dados Robusta:** Integração total com PostgreSQL, garantindo integridade dos dados e prontidão para escalabilidade em ambiente de produção.
 
-Dashboard Interativo: Interface principal com busca dinâmica e filtros para localização rápida de eventos.
-
-UI Responsiva & Polida: Sistema de grid dinâmico com altura de cards padronizada e tratamento de overflow de texto, garantindo uma interface consistente independente do volume de dados.
-
-Segurança e Permissões: Implementação de LoginRequiredMixin e verificações a nível de View para garantir que usuários só gerenciem seus próprios eventos, além de proteção contra ataques CSRF em todos os formulários.
-
-Persistência de Dados Robusta: Integração total com PostgreSQL, garantindo a integridade dos dados, suporte a transações complexas e prontidão para escalabilidade em ambiente de produção.
-
-
+---
 
 ## Tecnologias
 
-Backend: Python 3 + Django Framework (Class-Based Views).
+| Camada | Tecnologia |
+|---|---|
+| Backend | Python 3 + Django (Class-Based Views) |
+| Frontend | HTML5, CSS3 (Flexbox/Grid) + Django Templates |
+| Banco de Dados | PostgreSQL |
+| Containerização | Docker + Docker Compose |
+| Upload de Imagens | Pillow |
+| Variáveis de Ambiente | Python-Decouple |
+| Controle de Versão | Git + GitHub |
 
-Frontend: HTML5, CSS3 (Flexbox/Grid) e integração com o motor de templates do Django.
-
-Banco de Dados: PostgreSQL (Produção).
-
-Controle de Versão: Git e GitHub.
-
-Containerização: Docker + Docker Compose para ambiente de desenvolvimento reproduzível.
-
-
+---
 
 ## Screenshots
- 
+
 ![Landing Page](screenshots/landing.png)
 
 ![Home](screenshots/home.png)
@@ -44,7 +41,7 @@ Containerização: Docker + Docker Compose para ambiente de desenvolvimento repr
 
 ![Página de compra de Tickets](screenshots/tickets.png)
 
-
+---
 
 ## Como rodar localmente
 
@@ -53,25 +50,13 @@ Containerização: Docker + Docker Compose para ambiente de desenvolvimento repr
 ```bash
 git clone https://github.com/NicolasRenck/event-management
 cd event-management
+cp .env.example .env  # preencha as variáveis conforme a seção abaixo
+docker compose up --build
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py createsuperuser
 ```
 
-Crie um arquivo `.env` na raiz com as variáveis:
-
-```env
-DB_NAME=eventdb
-DB_USER=postgres
-DB_PASSWORD=sua_senha
-DB_HOST=db
-DB_PORT=5432
-```
-
-Suba os containers:
-
-```bash
-docker-compose up --build
-```
-
-Acesse em: `http://localhost:8000`
+Acesse: [http://localhost:8000](http://localhost:8000)
 
 ---
 
@@ -82,10 +67,28 @@ git clone https://github.com/NicolasRenck/event-management
 cd event-management
 python -m venv venv
 venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
+---
 
-clone → cria .env → docker compose up --build → migrate → createsuperuser → acessa localhost:8000
+## Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+```env
+SECRET_KEY=sua_secret_key_aqui
+DEBUG=True
+
+DB_NAME=eventdb
+DB_USER=postgres
+DB_PASSWORD=sua_senha_aqui
+DB_HOST=db
+DB_PORT=5432
+```
+
+> **Atenção:** nunca suba o arquivo `.env` real para o repositório. O arquivo `.env.example` serve apenas como referência.
