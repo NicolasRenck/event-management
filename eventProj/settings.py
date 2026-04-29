@@ -31,7 +31,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://event-management-1-3vip.onrender.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://event-management-1-3vip.onrender.com',
+    'http://event-management-1-3vip.onrender.com',
+]
 
 ROOT_URLCONF = 'eventProj.urls'
 
