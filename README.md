@@ -91,4 +91,19 @@ DB_HOST=db
 DB_PORT=5432
 ```
 
-> **Atenção:** nunca suba o arquivo `.env` real para o repositório. O arquivo `.env.example` serve apenas como referência.
+> **Atenção:** nunca suba o arquivo `.env` real para o repositorio. O arquivo `.env.example` serve apenas como referencia.
+
+
+
+## Deploy
+
+Aplicação em produção: https://event-management-1-3vip.onrender.com
+
+## Acesso
+
+Para testar a aplicação, crie uma conta em:
+https://event-management-1-3vip.onrender.com/registro/
+
+Ou use as credenciais de demonstração:
+- **Usuário:** demo
+- **Senha:** demo1234
