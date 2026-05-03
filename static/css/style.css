@@ -326,11 +326,11 @@ nav span {
 .event-card .event-actions a {
     flex: unset;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     text-decoration: none;
     color: var(--text-secondary);
-    padding: 9px 0;
+    padding: 15px;
     transition: background 0.18s, color 0.18s;
     border-right: 1px solid var(--border);
     display: block;
@@ -339,7 +339,7 @@ nav span {
 .event-card .event-actions a:last-child { border-right: none; }
 .event-card .event-actions a:hover { background: var(--accent-light); color: var(--accent); }
 .event-card .event-actions a.delete { color: var(--danger); }
-.event-card .event-actions a.delete:hover { background: #fdf0ef; color: var(--danger); }
+
 
 /* ─────────────────────────────────────────────────
    EMPTY STATE
