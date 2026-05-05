@@ -12,13 +12,13 @@ DEBUG = False
 ALLOWED_HOSTS = ['event-management-1-3vip.onrender.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
-    'cloudinary_storage',  
+    'cloudinary_storage', 
+    'cloudinary', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
-    'cloudinary',          
+    'django.contrib.messages',          
     'django.contrib.staticfiles',
     'eventApp',
 ]
