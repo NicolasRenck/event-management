@@ -330,7 +330,7 @@ nav span {
     font-weight: 500;
     text-decoration: none;
     color: var(--text-secondary);
-    padding: 15px;
+    padding: 10px;
     transition: background 0.18s, color 0.18s;
     border-right: 1px solid var(--border);
     display: block;
