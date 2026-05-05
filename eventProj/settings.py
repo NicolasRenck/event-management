@@ -102,8 +102,8 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'events'
 LOGOUT_REDIRECT_URL = 'home'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+##MEDIA_URL = '/media/'
+##MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ##CLOUDINARY_STORAGE = {
 ##    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
